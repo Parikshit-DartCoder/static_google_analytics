@@ -11,6 +11,26 @@
     function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
     gtag('config', 'G-KMJ7XQKMWG');
+
+    // Function to send a custom event
+    function sendVideoPlayEvent() {
+      const productDetails = {
+        productId: "12345",
+        productName: "Sample Product",
+        category: "Electronics",
+        price: 299.99,
+        currency: "USD"
+      };
+
+      gtag('event', 'video_play', {
+        event_category: 'Video',
+        event_label: productDetails.productName,
+        value: productDetails.price,
+        product_details: JSON.stringify(productDetails)
+      });
+
+      alert("Event 'video_play' has been sent with product details.");
+    }
   </script>
   <!-- Styles -->
   <style>
@@ -27,6 +47,18 @@
     p {
       color: #666;
     }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
   </style>
 </head>
 <body>
@@ -35,6 +67,7 @@
   </header>
   <main>
     <p>This is a simple static site with Google Analytics integration.</p>
+    <button onclick="sendVideoPlayEvent()">Simulate Video Play</button>
   </main>
   <footer>
     <p>&copy; 2025 Your Name. All Rights Reserved.</p>
